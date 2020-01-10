@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Repository = () => {
+const Repository = ({ data }) => {
+  const { name } = data;
+
   return (
-    <div>
-      Repository Component here.
+    <div className="repository">
+      {name}
     </div>
   );
 };

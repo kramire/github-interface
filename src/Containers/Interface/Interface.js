@@ -1,9 +1,13 @@
 import React from 'react';
+import { RepositoryList, IssueList } from '../../Components';
+import repoList from '../../testData.json';
+import issueList from '../../testIssueData.json';
 
 const Interface = () => {
   return (
     <div>
-      Interface Container here.
+      <RepositoryList repoList={repoList} />
+      {issueList.length > 0 && <IssueList issueList={issueList} />}
     </div>
   );
 };
