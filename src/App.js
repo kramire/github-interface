@@ -4,7 +4,7 @@ import { Interface } from './Containers';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Interface />
     </div>
   );

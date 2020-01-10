@@ -1,0 +1,21 @@
+.interface {
+  display: flex;
+}
+
+.interface .list {
+  flex: 1;
+  
+  box-sizing: border-box;
+  margin: 5px;
+}
+
+.interface .item {
+  margin: 20px 0;
+
+  background-color: #e8e8e8;
+  color: #3d3d3d;
+  
+  border-radius: 5px;
+  box-shadow: 0px 5px 7px 0px #c1c0c0;
+}
+

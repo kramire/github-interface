@@ -1,0 +1,14 @@
+.issue {
+  box-sizing: content-box;
+  padding: 20px;
+}
+
+.issue > p {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.issue div {
+  display: flex;
+  justify-content: space-between;
+}

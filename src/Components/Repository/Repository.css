@@ -1,0 +1,9 @@
+.repository {
+  box-sizing: content-box;
+  padding: 20px;
+}
+
+.repository:hover {
+  background-color: #bbbbbb !important;
+  cursor: pointer !important;
+}
