@@ -7,6 +7,8 @@
 
 # testing
 /coverage
+src/testRepoData.json
+src/testIssueData.json
 
 # production
 /build
