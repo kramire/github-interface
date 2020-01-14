@@ -53,6 +53,56 @@ describe('Reducers Testing', () => {
       expect(newState).toEqual(expectedState);
       expect(initialState).not.toEqual(newState);
     });
+    it('SET_SELECTED_REPOSITORY --> should update the selected repository for the issues list', () => {
+      // ARRANGE
+      const initialState = {
+        issues: {
+          selectedRepository: '',
+        },
+      };
+      const action = {
+        type: types.SET_SELECTED_REPOSITORY,
+        data: 'testRepo',
+      };
+
+      const expectedState = {
+        issues: {
+          selectedRepository: 'testRepo',
+        },
+      };
+
+      // ACT
+      const newState = gitHubApiReducer(initialState, action);
+
+      // ASSERT
+      expect(newState).toEqual(expectedState);
+      expect(initialState).not.toEqual(newState);
+    });
+    it('SET_SELECTED_USER --> should update the selected repository for the issues list', () => {
+      // ARRANGE
+      const initialState = {
+        issues: {
+          selectedUser: '',
+        },
+      };
+      const action = {
+        type: types.SET_SELECTED_USER,
+        data: 'testUser',
+      };
+
+      const expectedState = {
+        issues: {
+          selectedUser: 'testUser',
+        },
+      };
+
+      // ACT
+      const newState = gitHubApiReducer(initialState, action);
+
+      // ASSERT
+      expect(newState).toEqual(expectedState);
+      expect(initialState).not.toEqual(newState);
+    });
     it('SET_FILTER_PARAM --> should update the filter parameter given user selection', () => {
       // ARRANGE
       const initialState = {
@@ -80,7 +130,7 @@ describe('Reducers Testing', () => {
     });
   });
   describe('GitHub API call to get repositories', () => {
-    test('REQUEST_REPOSITORIES --> updates repositories isFetching property to true', () => {
+    it('REQUEST_REPOSITORIES --> updates repositories isFetching property to true', () => {
       // ARRANGE
       const initialState = {
         repositories: {
@@ -103,7 +153,7 @@ describe('Reducers Testing', () => {
       expect(newState).toEqual(expectedState);
       expect(initialState).not.toEqual(newState);
     });
-    test('SET_REPOSITORIES --> updates repositories items with response data', () => {
+    it('SET_REPOSITORIES --> updates repositories items with response data', () => {
       // ARRANGE
       const initialState = {
         repositories: {
@@ -129,7 +179,7 @@ describe('Reducers Testing', () => {
       expect(newState).toEqual(expectedState);
       expect(initialState).not.toEqual(newState);
     });
-    test('RECEIVED_REPOSITORIES --> updates repositories isFetching property to false', () => {
+    it('RECEIVED_REPOSITORIES --> updates repositories isFetching property to false', () => {
       // ARRANGE
       const initialState = {
         repositories: {
@@ -154,7 +204,7 @@ describe('Reducers Testing', () => {
     });
   });
   describe('GitHub API call to get issues', () => {
-    test('REQUEST_ISSUES --> updates issues isFetching property to true', () => {
+    it('REQUEST_ISSUES --> updates issues isFetching property to true', () => {
       // ARRANGE
       const initialState = {
         issues: {
@@ -177,7 +227,7 @@ describe('Reducers Testing', () => {
       expect(newState).toEqual(expectedState);
       expect(initialState).not.toEqual(newState);
     });
-    test('SET_ISSUES --> updates issues items with response data', () => {
+    it('SET_ISSUES --> updates issues items with response data', () => {
       // ARRANGE
       const initialState = {
         issues: {
@@ -203,7 +253,7 @@ describe('Reducers Testing', () => {
       expect(newState).toEqual(expectedState);
       expect(initialState).not.toEqual(newState);
     });
-    test('RECEIVED_ISSUES --> updates issues isFetching property to false', () => {
+    it('RECEIVED_ISSUES --> updates issues isFetching property to false', () => {
       // ARRANGE
       const initialState = {
         issues: {

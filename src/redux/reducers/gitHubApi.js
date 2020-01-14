@@ -4,7 +4,7 @@ const initialState = {
   apiKey: '',
   headers: {
     Accept: 'application/vnd.github.v3+json',
-    Authorization: '',
+    Authorization: 'token ',
   },
   repositories: {
     isFetching: false,
@@ -32,6 +32,22 @@ const gitHubApiReducer = (state = initialState, action) => {
         headers: {
           ...state.headers,
           Authorization: `token ${action.data}`,
+        },
+      };
+    case types.SET_SELECTED_REPOSITORY:
+      return {
+        ...state,
+        issues: {
+          ...state.issues,
+          selectedRepository: action.data,
+        },
+      };
+    case types.SET_SELECTED_USER:
+      return {
+        ...state,
+        issues: {
+          ...state.issues,
+          selectedUser: action.data,
         },
       };
     case types.SET_FILTER_PARAM:
