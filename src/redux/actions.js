@@ -103,3 +103,17 @@ export const selectUser = userName => {
     data: userName,
   };
 };
+
+export const setApiKey = apiKey => {
+  return {
+    type: types.SET_API_KEY,
+    data: apiKey,
+  };
+};
+
+export const setAuthorizationHeader = apiKey => {
+  return {
+    type: types.SET_AUTHORIZATION_HEADER,
+    data: apiKey,
+  };
+};

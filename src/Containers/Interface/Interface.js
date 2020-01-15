@@ -1,10 +1,9 @@
 import React from 'react';
 import { RepositoryList, IssueList } from '../../Components';
 import './Interface.css';
-import repoList from '../../testData.json';
-import issueList from '../../testIssueData.json';
+import { connect } from 'react-redux';
 
-const Interface = () => {
+const Interface = ({ repoList, issueList }) => {
   return (
     <div className="interface">
       <RepositoryList repoList={repoList} />
@@ -13,4 +12,11 @@ const Interface = () => {
   );
 };
 
-export default Interface;
+const mapStateToProps = state => {
+  return {
+    repoList: state.repositories.items,
+    issueList: state.issues.items,
+  };
+};
+
+export default connect(mapStateToProps, null)(Interface);

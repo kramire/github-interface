@@ -1,24 +1,22 @@
 import React from 'react';
 import './App.css';
-import { Interface } from './Containers';
-import { useEffect } from 'react';
-import { getRepositories } from './redux/actions';
 import { connect } from 'react-redux';
+import { Interface } from './Containers';
+import { InsertApiKey } from './Components';
 
-function App({ getRepositories }) {
-  useEffect(() => getRepositories());
 
+function App({ hasApiKey }) {
   return (
     <div className="app">
-      <Interface />
+      {hasApiKey ? <Interface /> : <InsertApiKey />}
     </div>
   );
-};
+}
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    getRepositories: () => dispatch(getRepositories()),
+    hasApiKey: state.apiKey.length > 0,
   };
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);
