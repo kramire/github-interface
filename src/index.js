@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducer from './redux/reducers';
 import App from './App';
-import { saveStateLocally, loadLocalState } from './utils';
+import { saveStateLocally, loadLocalState } from './assests/utils';
 
 const previousState = loadLocalState();
 

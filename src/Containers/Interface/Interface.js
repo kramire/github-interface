@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { RepositoryList, IssueList } from '../../Components';
-import './Interface.css';
 
 const Container = styled.div`
   display: flex;
