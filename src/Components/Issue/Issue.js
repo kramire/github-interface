@@ -5,13 +5,17 @@ import { formatEuropeanDate, calcHowLongAgo } from '../../assests/utils';
 
 const IssueItem = styled(StyledItem)`
   > p {
-    font-size: 16px;
     font-weight: 700;
   }
 
   > div {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  > div p {
+    margin: 0 auto;
   }
 `;
 
@@ -26,8 +30,14 @@ const Issue = ({ data }) => {
       <p>{title}</p>
       <div>
         <img src={user.avatar_url} alt="user avatar" height={AVATAR_HEIGHT} width={AVATAR_WIDTH} />
-        <p>Created On: {createdDate}</p>
-        <p>Last Upated: {lastUpdated}</p>
+        <div>
+          <p>Created On:</p>
+          <p>{createdDate}</p>
+        </div>
+        <div>
+          <p>Last Updated:</p>
+          <p>{lastUpdated}</p>
+        </div>
       </div>
     </IssueItem>
   );

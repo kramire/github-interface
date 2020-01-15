@@ -18,6 +18,26 @@ const Container = styled.div`
   > div:nth-of-type(2) {
     width: 70%;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    
+    > div {
+      margin: 10px 0;
+    }
+
+    > div:nth-of-type(1) {
+      height: 25vh;
+      width: auto;
+      overflow: scroll;
+    }
+
+    > div:nth-of-type(2) {
+      height: 65vh;
+      width: auto;
+      overflow: scroll;
+    }
+  }
 `;
 
 const Interface = ({ repoList, issueList }) => {
