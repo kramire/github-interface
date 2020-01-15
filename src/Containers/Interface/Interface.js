@@ -1,14 +1,32 @@
 import React from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { RepositoryList, IssueList } from '../../Components';
 import './Interface.css';
-import { connect } from 'react-redux';
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+
+  > div {
+    margin: 0 10px;
+  }
+
+  > div:nth-of-type(1) {
+    width: 30%;
+  }
+
+  > div:nth-of-type(2) {
+    width: 70%;
+  }
+`;
 
 const Interface = ({ repoList, issueList }) => {
   return (
-    <div className="interface">
+    <Container className="interface">
       <RepositoryList repoList={repoList} />
       {issueList.length > 0 && <IssueList issueList={issueList} />}
-    </div>
+    </Container>
   );
 };
 

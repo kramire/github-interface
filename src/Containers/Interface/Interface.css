@@ -1,14 +1,3 @@
-.interface {
-  display: flex;
-}
-
-.interface .list {
-  flex: 1;
-  
-  box-sizing: border-box;
-  margin: 5px;
-}
-
 .interface .item {
   margin: 20px 0;
 
