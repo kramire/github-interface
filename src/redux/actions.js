@@ -117,3 +117,10 @@ export const setAuthorizationHeader = apiKey => {
     data: apiKey,
   };
 };
+
+export const setFilterParam = filter => {
+  return {
+    type: types.SET_FILTER_PARAM,
+    data: filter,
+  };
+};
