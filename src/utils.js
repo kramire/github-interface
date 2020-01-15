@@ -21,7 +21,26 @@ function calcHowLongAgo(dateString) {
   return `Under an hour ago.`;
 }
 
+// save the state in localStorage in order to persist the data
+function saveStateLocally(state) {
+  const stringifiedState = JSON.stringify(state);
+  localStorage.setItem('state', stringifiedState);
+}
+
+// load the state from localStorage
+function loadLocalState() {
+  try {
+    const previousState = localStorage.getItem('state') || undefined;
+    return JSON.parse(previousState);
+  } 
+  catch (err) {
+    return undefined;
+  }
+}
+
 module.exports = {
   formatEuropeanDate,
   calcHowLongAgo,
+  saveStateLocally,
+  loadLocalState,
 };
