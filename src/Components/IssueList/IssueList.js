@@ -1,14 +1,26 @@
 import React from 'react';
-import { Issue, Toggle } from '../';
+import styled from 'styled-components';
+import { Issue } from '../';
+import { Toggle } from '../../Containers';
 
+const IssueHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+// List of issues for the given Repository.
 const IssueList = ({ issueList }) => {
+
+  const issueItems = issueList.map(issue => <Issue key={issue.id} data={issue} />);
+
   return (
-    <div className="issue-list list">
-      <>
+    <div>
+      <IssueHeader>
         <h1>Issues:</h1>
         <Toggle />
-      </>
-      {issueList.map(issue => <Issue data={issue} />)}
+      </IssueHeader>
+      {issueItems}
     </div>
   );
 };

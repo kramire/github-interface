@@ -6,4 +6,8 @@ export const StyledItem = styled.div`
   background-color: var(--primary-bg);
   color: var(--secondary-color);
   box-shadow: 0px 5px 7px 0px var(--secondary-bg);
+
+  * {
+  color: var(--secondary-color);
+  }
 `;

@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { setApiKey, setAuthorizationHeader, getRepositories } from '../../redux/actions';
 
-const Div = styled.div`
+const ApiContainer = styled.div`
+  width: fit-content;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -20,45 +21,49 @@ const Div = styled.div`
 `;
 
 const Label = styled.label`
-  font-size: 20px;
+  font-size: var(--header-font-size);
+
+  @media (max-width: 768px) {
+    font-size: var(--small-header-font-size);
+  }
 `;
 
 const TextInput = styled.input`
   :focus::placeholder {
     color: transparent;
   }
-  border-bottom: 1px solid #bbb;
-  color: #717171;
+  border-bottom: 1px solid var(--tertiary-bg);
+  color: var(--tertiary-color);
 `;
 
 const SubmitButton = styled.button`
-  background-color: #ddd;
+  background-color: var(--primary-bg);
   padding: 5px 10px;
   border-radius: 5px;
-  color: #3a3a3a;
+  color: var(--secondary-color);
   :hover {
-    background-color: #c1c1c1;
+    background-color: var(--secondary-bg);
   }
 `;
 
+// Basic form that accepts a string for the API Key.
 const InsertApiKey = ({ processApiKey }) => {
+
   const [apiInput, setApiInput] = useState('');
-  function handleChange(e) {
-    setApiInput(e.target.value);
-  }
-  function handleClick(e) {
+  const handleChange = e => setApiInput(e.target.value);
+  const handleClick = e => {
     e.preventDefault();
     processApiKey(apiInput);
-  }
+  };
 
   return (
-    <Div>
+    <ApiContainer>
       <Label>Please enter a GitHub API Key:</Label>
       <div>
         <TextInput type="text" placeholder="API Key" value={apiInput} onChange={handleChange} />
         <SubmitButton onClick={handleClick}>Submit</SubmitButton>
       </div>
-    </Div>
+    </ApiContainer>
   );
 };
 

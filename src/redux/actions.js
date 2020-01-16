@@ -1,24 +1,59 @@
 import * as types from './actionTypes';
 
-export const requestRepositories = () => {
-  return {
-    type: types.REQUEST_REPOSITORIES,
-  };
-};
+// Actions returning objects
+export const requestRepositories = () => ({
+  type: types.REQUEST_REPOSITORIES,
+});
 
-export const setRepositories = repositories => {
-  return {
-    type: types.SET_REPOSITORIES,
-    data: repositories,
-  };
-};
+export const setRepositories = repositories => ({
+  type: types.SET_REPOSITORIES,
+  data: repositories,
+});
 
-export const receivedRepositories = () => {
-  return {
-    type: types.RECEIVED_REPOSITORIES,
-  };
-};
+export const receivedRepositories = () => ({
+  type: types.RECEIVED_REPOSITORIES,
+});
 
+export const requestIssues = () => ({
+  type: types.REQUEST_ISSUES,
+});
+
+export const setIssues = issues => ({
+  type: types.SET_ISSUES,
+  data: issues,
+});
+
+export const receivedIssues = () => ({
+  type: types.RECEIVED_ISSUES,
+});
+
+export const selectRepository = repoName => ({
+  type: types.SET_SELECTED_REPOSITORY,
+  data: repoName,
+});
+
+export const selectUser = userName => ({
+  type: types.SET_SELECTED_USER,
+  data: userName,
+});
+
+export const setApiKey = apiKey => ({
+  type: types.SET_API_KEY,
+  data: apiKey,
+});
+
+export const setAuthorizationHeader = apiKey => ({
+  type: types.SET_AUTHORIZATION_HEADER,
+  data: apiKey,
+});
+
+export const setFilterParam = filter => ({
+  type: types.SET_FILTER_PARAM,
+  data: filter,
+});
+
+// Action Creators
+// GET request for repo data. Return desired data points.
 export const getRepositories = () => {
   return (dispatch, getState) => {
     const { headers } = getState();
@@ -41,29 +76,11 @@ export const getRepositories = () => {
         };
       }))
       .then(repos => dispatch(setRepositories(repos)))
-      .then(() => dispatch(receivedRepositories));
+      .then(() => dispatch(receivedRepositories()));
   };
 };
 
-export const requestIssues = () => {
-  return {
-    type: types.REQUEST_ISSUES,
-  };
-};
-
-export const setIssues = issues => {
-  return {
-    type: types.SET_ISSUES,
-    data: issues,
-  };
-};
-
-export const receivedIssues = () => {
-  return {
-    type: types.RECEIVED_ISSUES,
-  };
-};
-
+// GET request for issues data. Return desired data points.
 export const getIssues = () => {
   return (dispatch, getState) => {
     dispatch(requestIssues());
@@ -87,40 +104,5 @@ export const getIssues = () => {
       }))
       .then(items => dispatch(setIssues(items)))
       .then(() => dispatch(receivedIssues));
-  };
-};
-
-export const selectRepository = repoName => {
-  return {
-    type: types.SET_SELECTED_REPOSITORY,
-    data: repoName,
-  };
-};
-
-export const selectUser = userName => {
-  return {
-    type: types.SET_SELECTED_USER,
-    data: userName,
-  };
-};
-
-export const setApiKey = apiKey => {
-  return {
-    type: types.SET_API_KEY,
-    data: apiKey,
-  };
-};
-
-export const setAuthorizationHeader = apiKey => {
-  return {
-    type: types.SET_AUTHORIZATION_HEADER,
-    data: apiKey,
-  };
-};
-
-export const setFilterParam = filter => {
-  return {
-    type: types.SET_FILTER_PARAM,
-    data: filter,
   };
 };

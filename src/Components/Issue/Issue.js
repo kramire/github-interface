@@ -19,14 +19,18 @@ const IssueItem = styled(StyledItem)`
   }
 `;
 
+// List of issues for the given Repository and filter.
+// Shows the user's avatar, the created and updated date, and the issue name.
 const Issue = ({ data }) => {
+
   const AVATAR_HEIGHT = '40';
   const AVATAR_WIDTH = '40';
   const { title, user } = data;
   const createdDate = formatEuropeanDate(data.created_at);
   const lastUpdated = calcHowLongAgo(data.updated_at);
+
   return (
-    <IssueItem className="issue">
+    <IssueItem>
       <p>{title}</p>
       <div>
         <img src={user.avatar_url} alt="user avatar" height={AVATAR_HEIGHT} width={AVATAR_WIDTH} />

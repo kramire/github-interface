@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { RepositoryList, IssueList } from '../../Components';
+import { selectRepository, selectUser, getIssues } from '../../redux/actions';
 
-const Container = styled.div`
+const InterfaceContainer = styled.div`
   display: flex;
   justify-content: center;
 
@@ -40,12 +41,14 @@ const Container = styled.div`
   }
 `;
 
-const Interface = ({ repoList, issueList }) => {
+// Load the Repository List
+// Load the Issue List if there are issues to load.
+const Interface = ({ repoList, issueList, onRepoClick }) => {
   return (
-    <Container className="interface">
-      <RepositoryList repoList={repoList} />
+    <InterfaceContainer>
+      <RepositoryList repoList={repoList} onRepoClick={onRepoClick} />
       {issueList.length > 0 && <IssueList issueList={issueList} />}
-    </Container>
+    </InterfaceContainer>
   );
 };
 
@@ -56,4 +59,14 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(Interface);
+const mapDispatchToProps = dispatch => {
+  return {
+    onRepoClick: (repoName, userName) => {
+      dispatch(selectRepository(repoName));
+      dispatch(selectUser(userName));
+      dispatch(getIssues());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Interface);

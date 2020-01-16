@@ -3,18 +3,19 @@ import { connect } from 'react-redux';
 import { setFilterParam, getIssues } from '../../redux/actions';
 import { capitalize } from '../../assests/utils';
 
+// Drop down list to filter the displayed issues.
 const Toggle = ({ stateFilter, setIssueFilter }) => {
+
   const [filter, setFilter] = useState(stateFilter);
-  function handleChange(e) {
-    setIssueFilter(e.target.value);
-  }
-  const filterOptions = ["assigned", "created", "mentioned", "subscribed", "all"];
+  const handleChange = e => setIssueFilter(e.target.value);
+  const filters = ['assigned', 'created', 'mentioned', 'subscribed', 'all'];
+
   return (
     <div>
       <label>
         Filter:
         <select onChange={handleChange} value={stateFilter}>
-          {filterOptions.map(el => <option value={el}>{capitalize(el)}</option>)}
+          {filters.map(el => <option key={filters.indexOf(el)} value={el}>{capitalize(el)}</option>)}
         </select>
       </label>
     </div>

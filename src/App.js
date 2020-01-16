@@ -1,22 +1,19 @@
 import React from 'react';
-import './App.css';
 import { connect } from 'react-redux';
-import { Interface } from './Containers';
-import { InsertApiKey } from './Components';
+import { Interface, InsertApiKey } from './Containers';
 
-
+// If there's an API Key to use, load the interface.
+// Otherwise, load the form to insert an API Key.
 function App({ hasApiKey }) {
   return (
-    <div className="app">
+    <div>
       {hasApiKey ? <Interface /> : <InsertApiKey />}
     </div>
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    hasApiKey: state.apiKey.length > 0,
-  };
-};
+const mapStateToProps = state => ({
+  hasApiKey: state.apiKey.length > 0,
+});
 
 export default connect(mapStateToProps, null)(App);

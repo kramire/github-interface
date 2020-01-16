@@ -1,11 +1,17 @@
 import React from 'react';
 import { Repository } from '../';
 
-const RepositoryList = ({ repoList }) => {
+// List of repositories for the user API Key.
+const RepositoryList = ({ repoList, onRepoClick }) => {
+
+  const repoItems = repoList.map(repo => (
+    <Repository key={repo.id} data={repo} onRepoClick={onRepoClick} />
+  ));
+
   return (
-    <div className="repo-list list">
+    <div>
       <h1>Repositories:</h1>
-      {repoList.map(repo => <Repository data={repo} />)}
+      {repoItems}
     </div>
   );
 };

@@ -1,11 +1,11 @@
-// given a date as a string, return it with the format dd/mm/yyyy
-function formatEuropeanDate(dateString) {
+// Given a date as a string, return it with the format dd/mm/yyyy.
+export const formatEuropeanDate = dateString => {
   const date = new Date(dateString);
   return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
-}
+};
 
-// given a historical date, return colloquially how long "ago"
-function calcHowLongAgo(dateString) {
+// Given a historical date, return colloquially how long "ago."
+export const calcHowLongAgo = dateString => {
   const date = new Date(dateString);
   const now = Date.now();
   const hoursAgo = Math.floor(now - date) / 36e5;
@@ -19,16 +19,16 @@ function calcHowLongAgo(dateString) {
   if (hoursAgo > 1) return `${hoursAgo} hours ago`;
   if (hoursAgo === 1) return `1 hour ago`;
   return `Under an hour ago.`;
-}
+};
 
-// save the state in localStorage in order to persist the data
-function saveStateLocally(state) {
+// Save the state in localStorage in order to persist the data.
+export const saveStateLocally = state => {
   const stringifiedState = JSON.stringify(state);
   localStorage.setItem('state', stringifiedState);
-}
+};
 
-// load the state from localStorage
-function loadLocalState() {
+// Load the state from localStorage.
+export const loadLocalState = () => {
   try {
     const previousState = localStorage.getItem('state') || undefined;
     return JSON.parse(previousState);
@@ -36,17 +36,9 @@ function loadLocalState() {
   catch (err) {
     return undefined;
   }
-}
+};
 
-// capitalize a string
-function capitalize(string) {
+// Capitalize a string.
+export const capitalize = string => {
   return string[0].toUpperCase() + string.slice(1,);
-}
-
-module.exports = {
-  formatEuropeanDate,
-  calcHowLongAgo,
-  saveStateLocally,
-  loadLocalState,
-  capitalize,
 };

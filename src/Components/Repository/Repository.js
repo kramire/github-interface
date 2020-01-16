@@ -1,33 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StyledItem } from '../../assests/globalStyledComponents';
-import { connect } from 'react-redux';
-import { selectRepository, selectUser, getIssues } from '../../redux/actions';
 
 const RepoItem = styled(StyledItem)`
   :hover {
-    background-color: #bbbbbb !important;
-    cursor: pointer !important;
+    background-color: var(--tertiary-bg);
+    cursor: pointer;
   }
 `;
 
-const Repository = ({ data, getIssuesForRepo }) => {
+// Repository Item. Displaying just the name.
+// When clicked, a list of corresponding issues will be displayed.
+const Repository = ({ data, onRepoClick }) => {
   const { name, owner } = data;
   return (
-    <RepoItem className="repository" onClick={() => getIssuesForRepo(name, owner.login)}>
+    <RepoItem onClick={() => onRepoClick(name, owner.login)}>
       {name}
     </RepoItem>
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getIssuesForRepo: (repoName, userName) => {
-      dispatch(selectRepository(repoName));
-      dispatch(selectUser(userName));
-      dispatch(getIssues());
-    },
-  };
-};
-
-export default connect(null, mapDispatchToProps)(Repository);
+export default Repository;
